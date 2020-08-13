@@ -193,10 +193,14 @@ extension UIView {
     // MARK: Private
     
     private func transform<T: Decodable>(_ dynamicObject: DynamicObject) -> T? {
-        let encoder = JSONEncoder()
-        let decoder = JSONDecoder()
-        guard let data = try? encoder.encode(dynamicObject) else { return nil }
-        return try? decoder.decode(T.self, from: data)
+        if T.self is String.Type {
+            return "\(dynamicObject)" as? T
+        } else {
+            let encoder = JSONEncoder()
+            let decoder = JSONDecoder()
+            guard let data = try? encoder.encode(dynamicObject) else { return nil }
+            return try? decoder.decode(T.self, from: data)
+        }
     }
     
     // expression last value cache is used only for multiple expressions binding
