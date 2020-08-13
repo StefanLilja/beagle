@@ -64,5 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Beagle.registerCustomComponent("SampleTextField", componentType: DemoTextField.self)
         Beagle.registerCustomComponent("MyComponent", componentType: MyComponent.self)
         Beagle.registerCustomAction("CustomConsoleLogAction", actionType: CustomConsoleLogAction.self)
+        Beagle.registerCustomComponent("BoxComponent", componentType: BoxComponent.self)
     }
 }
